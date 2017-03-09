@@ -343,8 +343,8 @@ class MainThread():
             duration = 60 * 10 # 10 Minutes
             filelastupdate = time.time() - os.path.getmtime(file)
             logging.debug("json file too old? " + str(filelastupdate) + " > " + str(duration) + ": " + str(filelastupdate > duration))
-            #if filelastupdate  > duration: # json file too old?
-            if True: # json file too old?
+            if filelastupdate  > duration: # json file too old?
+            #if True: # json file too old?
                     if internetOn():
                             logging.debug("Internet is on.")
                             try:

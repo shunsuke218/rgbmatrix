@@ -1,0 +1,94 @@
+
+{
+  "response": {
+  "version":"0.1",
+  "termsofService":"http://www.wunderground.com/weather/api/d/terms.html",
+  "features": {
+  "conditions": 1
+  }
+	}
+  ,	"current_observation": {
+		"image": {
+		"url":"http://icons.wxug.com/graphics/wu2/logo_130x80.png",
+		"title":"Weather Underground",
+		"link":"http://www.wunderground.com"
+		},
+		"display_location": {
+		"full":"Cambridge, MA",
+		"city":"Cambridge",
+		"state":"MA",
+		"state_name":"Massachusetts",
+		"country":"US",
+		"country_iso3166":"US",
+		"zip":"02138",
+		"magic":"1",
+		"wmo":"99999",
+		"latitude":"42.38000107",
+		"longitude":"-71.12999725",
+		"elevation":"11.0"
+		},
+		"observation_location": {
+		"full":"The Larches, Cambridge, Massachusetts",
+		"city":"The Larches, Cambridge",
+		"state":"Massachusetts",
+		"country":"US",
+		"country_iso3166":"US",
+		"latitude":"42.378208",
+		"longitude":"-71.146263",
+		"elevation":"49 ft"
+		},
+		"estimated": {
+		},
+		"station_id":"KMACAMBR82",
+		"observation_time":"Last Updated on March 9, 10:15 AM EST",
+		"observation_time_rfc822":"Thu, 09 Mar 2017 10:15:06 -0500",
+		"observation_epoch":"1489072506",
+		"local_time_rfc822":"Thu, 09 Mar 2017 10:19:37 -0500",
+		"local_epoch":"1489072777",
+		"local_tz_short":"EST",
+		"local_tz_long":"America/New_York",
+		"local_tz_offset":"-0500",
+		"weather":"Clear",
+		"temperature_string":"48.3 F (9.1 C)",
+		"temp_f":48.3,
+		"temp_c":9.1,
+		"relative_humidity":"33%",
+		"wind_string":"From the WSW at 12.0 MPH Gusting to 12.0 MPH",
+		"wind_dir":"WSW",
+		"wind_degrees":257,
+		"wind_mph":12.0,
+		"wind_gust_mph":"12.0",
+		"wind_kph":19.3,
+		"wind_gust_kph":"19.3",
+		"pressure_mb":"1010",
+		"pressure_in":"29.81",
+		"pressure_trend":"0",
+		"dewpoint_string":"20 F (-6 C)",
+		"dewpoint_f":20,
+		"dewpoint_c":-6,
+		"heat_index_string":"NA",
+		"heat_index_f":"NA",
+		"heat_index_c":"NA",
+		"windchill_string":"43 F (6 C)",
+		"windchill_f":"43",
+		"windchill_c":"6",
+		"feelslike_string":"43 F (6 C)",
+		"feelslike_f":"43",
+		"feelslike_c":"6",
+		"visibility_mi":"10.0",
+		"visibility_km":"16.1",
+		"solarradiation":"--",
+		"UV":"4","precip_1hr_string":"0.00 in ( 0 mm)",
+		"precip_1hr_in":"0.00",
+		"precip_1hr_metric":" 0",
+		"precip_today_string":"0.00 in (0 mm)",
+		"precip_today_in":"0.00",
+		"precip_today_metric":"0",
+		"icon":"clear",
+		"icon_url":"http://icons.wxug.com/i/c/k/clear.gif",
+		"forecast_url":"http://www.wunderground.com/US/MA/Cambridge.html",
+		"history_url":"http://www.wunderground.com/weatherstation/WXDailyHistory.asp?ID=KMACAMBR82",
+		"ob_url":"http://www.wunderground.com/cgi-bin/findweather/getForecast?query=42.378208,-71.146263",
+		"nowcast":""
+	}
+}

@@ -1,5 +1,7 @@
 #!/usr/bin/python
 from rgbmatrix import Adafruit_RGBmatrix
+#def Adafruit_RGBmatrix(a=None, b=None): # Debug environment
+#    return
 
 import Image
 import ImageDraw
@@ -37,6 +39,7 @@ class MainThread():
         self.font = ImageFont.truetype('/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf', 24)
         self.image_text = None
         self.news = None
+        self.stock = None
         self.weather = None
         self.weatherlogo = None
         self.weathertext = None
@@ -52,6 +55,8 @@ class MainThread():
         self.nyan_event.clear()
         self.print_event = threading.Event()
         self.print_event.set()
+        self.stock_event = threading.Event()
+        self.stock_event.clear()
         self.stop_prompt = threading.Event()
         self.stop_prompt.clear()
 
@@ -95,9 +100,10 @@ class MainThread():
                 logging.debug("End printing input: " + str(self.text) )
                 self.text = None
                 # Back to print mode
+                self.input_event.clear()
                 self.news_event.clear()
                 self.nyan_event.clear()
-                self.input_event.clear()
+                self.stock_event.clear()
                 self.print_event.set()
 
             # News event
@@ -111,9 +117,10 @@ class MainThread():
                 self.stop_prompt.clear()
                 logging.debug("End news mode.")
                 # Back to print mode
+                self.input_event.clear()
                 self.news_event.clear()
                 self.nyan_event.clear()
-                self.input_event.clear()
+                self.stock_event.clear()
                 self.print_event.set()
 
                 
@@ -131,9 +138,27 @@ class MainThread():
                     continue
                 logging.debug("End printing nyan" )
                 # Back to print mode
+                self.input_event.clear()
                 self.news_event.clear()
                 self.nyan_event.clear()
+                self.stock_event.clear()
+                self.print_event.set()
+
+            # Stock event
+            elif self.stock_event.is_set():
+                self.stop_prompt.clear()
+                logging.debug("Printing stock: " + str(self.stock) )
+                self.printStock()
+                
+                self.text = None
+                self.setImage()
+                self.stop_prompt.clear()
+                logging.debug("End stock mode.")
+                # Back to print mode
                 self.input_event.clear()
+                self.news_event.clear()
+                self.nyan_event.clear()
+                self.stock_event.clear()
                 self.print_event.set()
 
             # Print event
@@ -150,7 +175,7 @@ class MainThread():
             self.print_event.wait()
             logging.debug("Reloading Image: " + str(self.image_text))
             self.setImage()
-            time.sleep(1)
+            time.sleep(0.9)
 
             
     ############################################################
@@ -160,6 +185,7 @@ class MainThread():
         self.print_event.clear()
         self.news_event.clear()
         self.nyan_event.clear()
+        self.stock_event.clear()
         self.stop_prompt.set()
         matrix.Clear()
         self.text = input
@@ -169,6 +195,7 @@ class MainThread():
         self.print_event.clear()
         self.nyan_event.clear()
         self.input_event.clear()
+        self.stock_event.clear()
         self.stop_prompt.set()
         matrix.Clear()
         self.news_event.set()
@@ -177,12 +204,26 @@ class MainThread():
         self.stop_prompt.set()
         #self.news_event.clear()
 
+    def readStock(self):
+        self.print_event.clear()
+        self.news_event.clear()
+        self.nyan_event.clear()
+        self.input_event.clear()
+        self.stop_prompt.set()
+        matrix.Clear()
+        self.stock_event.set()
+        raw_input('Stock mode. Press anything to continue...')
+        logging.debug("Exit stock mode triggered")
+        self.stop_prompt.set()
+
+
 
     def nyan(self):
         self.print_event.clear()
         self.input_event.clear()
         self.news_event.clear()
         self.stop_prompt.set()
+        self.stock_event.clear()
         matrix.Clear()
         self.nyan_event.set()
 
@@ -191,6 +232,7 @@ class MainThread():
         self.input_event.clear()
         self.news_event.clear()
         self.nyan_event.clear()
+        self.stock_event.clear()
         self.stop_prompt.set()
         matrix.Clear()
         raw_input('Silent mode. Press anything to continue...')
@@ -261,16 +303,19 @@ class MainThread():
 
     def setNews(self):
             self.news = None
+            file = "news/news.json"
             key = "06e1a2dceeba46c89de4eecc8aaf24c0"
-            url = "https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=" + key
+            #url = "https://newsapi.org/v1/articles?source=google-news&sortBy=top&apiKey=" + key
+            url = "https://newsapi.org/v1/articles?source=the-next-web&sortBy=latest&apiKey=" + key
             duration = 60 * 30 # 30 Minutes
-            logging.debug("json file too old? " + str(time.time() - os.path.getmtime("news/news.json") ) + " > " + str(duration) + ": " + str(time.time() - os.path.getmtime("news/news.json") > duration))
-            if time.time() - os.path.getmtime("news/news.json")  > duration: # json file too old?
+            filelastupdate = time.time() - os.path.getmtime(file)
+            logging.debug("json file too old? " + str(filelastupdate ) + " > " + str(duration) + ": " + str(filelastupdate > duration))
+            if filelastupdate  > duration: # json file too old?
             #if True: # json file too old?
                     if internetOn():
                             logging.debug("Internet is on.")
                             try:
-                                    urllib.urlretrieve( url, "news/news.json") # Try fetch json file
+                                    urllib.urlretrieve( url, file) # Try fetch json file
                                     logging.debug("Obtained news json.")
                             except:
                                     logging.debug("Could not load article.")
@@ -280,7 +325,7 @@ class MainThread():
             else:
                 logging.debug("Using old json file.")
             try:
-                    newsfile = open("news/news.json")
+                    newsfile = open(file)
                     newsjson = json.load(newsfile)
                     self.news = [entry["description"] for entry in newsjson["articles"]]
                     #self.news = newsjson["articles"]
@@ -291,19 +336,114 @@ class MainThread():
                     self.text = "Error loading json file."
             logging.debug("Ending print news")
 
+    def setStock(self):
+            self.stock = None
+            file = "stock/stock.json"
+            url = "https://www.google.com/finance/info?q=INDEXDJX:%20.DJI,INDEXNASDAQ:%20.IXIC,INDEXSP:%20.INX,NASDAQ%3aAKAM"
+            duration = 60 * 10 # 10 Minutes
+            filelastupdate = time.time() - os.path.getmtime(file)
+            logging.debug("json file too old? " + str(filelastupdate) + " > " + str(duration) + ": " + str(filelastupdate > duration))
+            #if filelastupdate  > duration: # json file too old?
+            if True: # json file too old?
+                    if internetOn():
+                            logging.debug("Internet is on.")
+                            try:
+                                urllib.urlretrieve( url, file ) # Try fetch json file
+                                with open(file, 'r') as input:
+                                    data = input.read()
+                                data = data.replace('//','')
+                                with open(file, 'w') as output:
+                                    output.write(data)
+                                logging.debug("Obtained news json.")
+                            except:
+                                logging.exception("EXCEPTION")
+                                logging.debug("Could not load article.")
+                    else:
+                        logging.debug("Internet is not on.")
+                        self.text = "Internet is disabled."
+            else:
+                logging.debug("Using old json file.")
+            try:
+                    stockfile = open(file)
+                    stockjson = json.load(stockfile)
+                    logging.exception("EXCEPTION")
+
+                    stockname = ["DOW","NASDAQ","S&P","AKAM"]
+                    getlist = lambda x: [entry[x] for entry in stockjson]
+                    lists = [stockname, getlist("l"), getlist("c"), getlist("cp")]
+                    result = {z[0]:list(z[1:]) for z in zip (*lists)}
+                    self.stock = result
+                    logging.debug(str(self.stock))
+            except:
+                    logging.exception("ERROR!")
+                    logging.debug("Error loading json file")
+                    self.text = "Error loading json file."
+            logging.debug("Ending print stock")
             
+    def setStockImage(self):
+                global rasplogo,akamailogo, up, down
+                # Set logo
+                akamaiwidth = akamailogo.size[0]
+                raspwidth = rasplogo.size[0]
+
+                # Initial width
+                width = 0
+                self.image_text = ""
+                imagelist = []
+
+                for stockname, stockinfo in self.stock.iteritems():
+                    # Price
+                    price = stockname + " " + stockinfo[0] + " "
+                    self.image_text += price
+                    priceimage = self.textToImage(price, "white")
+                    
+                    # Price Change
+                    pricec = stockinfo[1] + " (" + stockinfo[2] + " %)"
+                    self.image_text += pricec
+                    color = "green" if float(stockinfo[1]) >= 0 else "red"
+                    updown = up if color is "green" else down
+                    pricecimage = self.textToImage(pricec, color)
+
+                    pricewidth = priceimage.size[0] + 10 + updown.size[0] + 10 + pricecimage.size[0]
+                    
+                    # Set width
+                    tempwidth = akamaiwidth + 10 + pricewidth + 10 + raspwidth + 10
+                    tempimage = Image.new("RGBA", (tempwidth, 32))
+                    width += tempwidth
+
+                    temp = 10
+                    tempimage.paste(akamailogo,(temp,0))
+                    temp += akamaiwidth + 10 
+                    tempimage.paste(priceimage, (temp,0))
+                    temp += priceimage.size[0] + 10
+                    tempimage.paste(updown, (temp,0))
+                    temp += updown.size[0] + 10
+                    tempimage.paste(pricecimage, (temp,0))
+                    temp += pricecimage.size[0] + 10
+                    tempimage.paste(rasplogo, (temp, 0))
+
+                    imagelist.append(tempimage)
+                image = Image.new("RGBA", (width, 32))
+                temp = 0
+                for img in imagelist:
+                    image.paste(img, (temp,32))
+                    temp += img.size[0]
+                self.image = image
+
+
     def setWeather(self):
             while not self.stop_event.is_set():
                     logging.debug("Set weather")
                     now = time.time()
-                    duration = 60 * 30 # 30 Minutes
-                    
-                    logging.debug("json file timestamp (" + str(time.time() - os.path.getmtime("weather/weather.json") ) + ") less than duration (" + str (duration) + ")? " + str(time.time() - os.path.getmtime("weather/weather.json") > duration))
-                    if time.time() - os.path.getmtime("weather/weather.json") > duration: # json file too old?
+                    duration = 60 * 20 # 20 Minutes
+                    file = "weather/weather.json"
+                    filelastupdate = time.time() - os.path.getmtime(file)
+                    logging.debug("json file timestamp (" + str(filelastupdate ) + ") less than duration (" + str (duration) + ")? " + str(filelastupdate > duration))
+                    if filelastupdate > duration: # json file too old?
                             if internetOn(): # Internet connected?
                                     try:
                                             weatherurl = "http://api.wunderground.com/api/db42a9f158effdb7/conditions/q/MA/Cambridge.json"
-                                            urllib.urlretrieve( weatherurl, "weather/weather.json") # Try fetch json file
+                                            urllib.urlretrieve( weatherurl, file) # Try fetch json file
                                     except:
                                             self.weather = None
                                             self.weathericon = None
@@ -314,7 +454,7 @@ class MainThread():
                                     return
 
                     # Get weather information
-                    weatherfile = open("weather/weather.json")
+                    weatherfile = open(file)
                     weatherjson = json.load(weatherfile)
                     weathertext = "Temp. " +  weatherjson["current_observation"]["feelslike_string"]
                     weatherimage = self.textToImage(weathertext)
@@ -377,6 +517,28 @@ class MainThread():
                     return True
             logging.debug("Reached to the end of news" )
 
+    def printStock(self):
+        while True:
+            self.setStock()
+            self.setStockImage()
+            self.text = self.image_text
+            try:
+                logging.debug("Printing stock: " + self.image_text)
+            except:
+                logging.exception
+            self.prompt(True, True, True)
+            # If there are stock while prompt
+            if self.stop_prompt.is_set() and self.stock_event.is_set():
+                logging.debug("Exitting stock mode")
+                return True
+            elif self.stop_prompt.is_set():
+                logging.debug("Going to other mode.")
+                return True
+            elif self.stock_event.is_set() is False:
+                logging.debug("Stock mode ended.")
+                return True
+        logging.debug("Reached to the end of stock" )
+
     
     def printNyan(self):
         global nyan_list
@@ -432,13 +594,13 @@ class MainThread():
                                 return
 
 
-    def textToImage(self, input):
+    def textToImage(self, input, color=128):
                 text = textwrap.fill(input, 100)
                 orig = Image.new("RGBA", (512,32))
                 textsize = ImageDraw.Draw(orig).textsize(text, self.font)
                 final = Image.new("RGBA", textsize)
                 draw = ImageDraw.Draw(final)
-                draw.text((0, 0), input, fill = 128, font=self.font)
+                draw.text((0, 0), input, fill = color, font=self.font)
                 return final
     
             
@@ -463,6 +625,9 @@ if __name__ == '__main__':
                                 
                         rasplogo = Image.open("rasplogo_s.png")
                         akamailogo = Image.open("akamailogo_s.png")
+
+                        up = Image.open("stock/up.png")
+                        down = Image.open("stock/down.png")
 
                         thread = MainThread()
                         logging.debug("Starting main thread.")
@@ -491,8 +656,8 @@ if __name__ == '__main__':
                                 thread.input(input)
                         elif input == "4" or input == "news":
                                 thread.readNews()
-                        elif input == "5" or input == "internet":
-                                thread.input("Internet on?: " + str(internetOn()))
+                        elif input == "5" or input == "stock":
+                                thread.readStock()
                         elif input == "8" or input == "nyan" or input == "cat":
                                 thread.nyan()
                         elif input == "9" or input == "silent":
@@ -502,6 +667,8 @@ if __name__ == '__main__':
                                 if raw_input('') is "y":
                                         thread.stop()
                                         break
+                        elif input == "internet" or input == "network" or input == "net" or input == "connection":
+                                thread.input("Internet on?: " + str(internetOn()))
                         else:
                                 thread.input(input)
                 except (KeyboardInterrupt, SystemExit):

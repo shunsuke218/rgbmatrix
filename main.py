@@ -524,7 +524,7 @@ class MainThread():
             self.setStockImage()
             self.text = self.image_text
             try:
-                logging.debug("Printing stock: " + self.image_text)
+                logging.debug("Printing stock: " + self.image_text + " " + str(self.width))
             except:
                 logging.exception
             self.prompt(True, True, True)
@@ -575,7 +575,7 @@ class MainThread():
                                 starttime = time.time()
                                 # Exit if halted by event
                                 matrix.SetImage(self.image.im.id, n, 0)
-                                #logging.debug("prompting: " +str(n) + "/" + str(end))
+                                logging.debug("prompting: " +str(n) + "/" + str(end))
                                 self.stop_prompt.wait(self.sleep)
                                 if self.stop_prompt.is_set():
                                         return

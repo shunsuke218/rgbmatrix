@@ -428,6 +428,7 @@ class MainThread():
                 for img in imagelist:
                     image.paste(img, (temp,32))
                     temp += img.size[0]
+                self.width = width
                 self.image = image
 
 

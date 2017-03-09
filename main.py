@@ -404,10 +404,11 @@ class MainThread():
                     updown = up if color is "green" else down
                     pricecimage = self.textToImage(pricec, color)
 
+                    # Set width
                     pricewidth = priceimage.size[0] + 10 + updown.size[0] + 10 + pricecimage.size[0]
                     
-                    # Set width
                     tempwidth = akamaiwidth + 10 + pricewidth + 10 + raspwidth + 10
+                    # Create image
                     tempimage = Image.new("RGBA", (tempwidth, 32))
                     width += tempwidth
 
@@ -423,10 +424,11 @@ class MainThread():
                     tempimage.paste(rasplogo, (temp, 0))
 
                     imagelist.append(tempimage)
+                # Final image
                 image = Image.new("RGBA", (width, 32))
                 temp = 0
                 for img in imagelist:
-                    image.paste(img, (temp,32))
+                    image.paste(img, (temp, 0))
                     temp += img.size[0]
                 self.width = width
                 self.image = image

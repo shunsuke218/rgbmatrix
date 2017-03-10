@@ -278,7 +278,7 @@ class MainThread():
                         self.image_text = userinput + " " + weathertext
 
                 # Set width
-                width = akamaiwidth + 10 + textwidth + 10 + raspwidth + 10
+                width = 10 + akamaiwidth + 10 + textwidth + 10 + raspwidth + 10
                 width += weatherlogowidth + 10 + weatherwidth + 10 if weather is not None and weatherlogo is not None else 0
                 width *= 2 if default is None else 1
                 self.width = width
@@ -407,7 +407,7 @@ class MainThread():
                     # Set width
                     pricewidth = priceimage.size[0] + 10 + updown.size[0] + 10 + pricecimage.size[0]
                     
-                    tempwidth = akamaiwidth + 10 + pricewidth + 10 + raspwidth + 10
+                    tempwidth = 10 + akamaiwidth + 10 + pricewidth + 10 + raspwidth + 10
                     # Create image
                     tempimage = Image.new("RGBA", (tempwidth, 32))
                     width += tempwidth
@@ -595,6 +595,12 @@ class MainThread():
                                 logging.debug("Start second~ loop!")
                                 self.prompt(False,True)
                                 return
+                        # Update start and end.
+                        start = 0 if repeat else SIZE
+                        end = -self.width if word else -self.width/2
+                        if word is True and repeat is True:
+                            start = SIZE
+
 
 
     def textToImage(self, input, color=128):
@@ -669,6 +675,7 @@ if __name__ == '__main__':
                                 thread.input("Exit? (y/n)")
                                 if raw_input('') is "y":
                                         thread.stop()
+                                        time.sleep(5)
                                         break
                         elif input == "internet" or input == "network" or input == "net" or input == "connection":
                                 thread.input("Internet on?: " + str(internetOn()))

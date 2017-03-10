@@ -564,43 +564,37 @@ class MainThread():
         
     def prompt(self, word=False, repeat=False, news=False):
             while not self.stop_event.is_set():
-                start = 0 if repeat else SIZE
-                end = -self.width if word else -self.width/2
-                if word is True and repeat is True:
-                    start = SIZE
-
                 if repeat is False:
-                        logging.debug("Start first loop! " + str(start) + " " + str(end))
+                        logging.debug("Start first loop!")
                         matrix.Clear()
                 while True:
-                        for n in range (start, end, -1):
-                                starttime = time.time()
-                                # Exit if halted by event
-                                matrix.SetImage(self.image.im.id, n, 0)
-                                #logging.debug("prompting: " +str(n) + "/" + str(end))
-                                self.stop_prompt.wait(self.sleep)
-                                if self.stop_prompt.is_set():
-                                        return
-                        # If word, exit after the first cycle
-                        if news is True:
+                    start = 0 if repeat else SIZE
+                    end = -self.width if word else -self.width/2
+                    if word is True and repeat is True:
+                        start = SIZE
+                    for n in range (start, end, -1):
+                        starttime = time.time()
+                        # Exit if halted by event
+                        matrix.SetImage(self.image.im.id, n, 0)
+                        #logging.debug("prompting: " +str(n) + "/" + str(end))
+                        self.stop_prompt.wait(self.sleep)
+                        if self.stop_prompt.is_set():
                             return
-                        
-                        # If not word, continue to make repeat
-                        if repeat is not True:
-                            if word is True:
-                                logging.debug("Second word loop!")
-                                self.prompt(True, True)
-                                return
-                            else:
-                                logging.debug("Start second~ loop!")
-                                self.prompt(False,True)
-                                return
-                        # Update start and end.
-                        start = 0 if repeat else SIZE
-                        end = -self.width if word else -self.width/2
-                        if word is True and repeat is True:
-                            start = SIZE
 
+                    # If news, exit after the first cycle
+                    if news is True:
+                        return
+                        
+                    # If not news, continue to make repeat
+                    if repeat is not True:
+                        if word is True:
+                            logging.debug("Second word loop!")
+                            self.prompt(True, True)
+                            return
+                        else:
+                            logging.debug("Start second~ loop!")
+                            self.prompt(False,True)
+                            return
 
 
     def textToImage(self, input, color=128):

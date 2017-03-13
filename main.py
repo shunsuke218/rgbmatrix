@@ -259,7 +259,7 @@ class MainThread():
                 global rasplogo,akamailogo
 
                 # Set word text
-                userinput = default or "This is Akamai Security Operation Center (SOC). Current time is " + datetime.now().strftime("%H:%M:%S ") + strftime("%Z", gmtime())
+                userinput = default or "This is Akamai Security Operation Center (SOC). Current time is " + strftime("%H:%M:%S %Z", time.localtime()) + strftime(" (%H:%M:%S GMT)", time.gmtime())
                 self.image_text = userinput
                 text = self.textToImage(userinput)
                 textwidth = text.size[0]

@@ -438,7 +438,7 @@ class MainThread():
             while not self.stop_event.is_set():
                     logging.debug("Set weather")
                     now = time.time()
-                    duration = 60 * 20 # 20 Minutes
+                    duration = 60 * 3 # 3 Minutes
                     file = "weather/weather.json"
                     filelastupdate = time.time() - os.path.getmtime(file)
                     logging.debug("json file timestamp (" + str(filelastupdate ) + ") less than duration (" + str (duration) + ")? " + str(filelastupdate > duration))
@@ -452,9 +452,7 @@ class MainThread():
                                             self.weathericon = None
                                             return
                             else:
-                                    self.weather = None # No internet connection
-                                    self.weathericon = None
-                                    return
+                                    return # If no update, don't change the information
 
                     # Get weather information
                     weatherfile = open(file)
@@ -490,7 +488,7 @@ class MainThread():
                     weatherlogo = Image.open("weather/s_" + str(iconname)).convert("RGBA")
                     logging.debug(str(weatherlogo))
                     self.weatherlogo = weatherlogo
-                    time.sleep(duration)
+                    time.sleep(duration / 4) # Every quarter of duration
 
                     
                                 

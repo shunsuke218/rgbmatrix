@@ -61,9 +61,9 @@ class MainThread():
         self.stop_prompt.clear()
 
         # Run Threads
-        self.weather_thread = threading.Thread(target = self.setWeather, name = "Weather Thread")
-        self.weather_thread.setDaemon(True)
-        self.weather_thread.start()
+        #self.weather_thread = threading.Thread(target = self.setWeather, name = "Weather Thread")
+        #self.weather_thread.setDaemon(True)
+        #self.weather_thread.start()
         
         self.reload_thread = threading.Thread(target = self.reload, name = "Reload Thread")
         self.reload_thread.setDaemon(True)
@@ -269,6 +269,8 @@ class MainThread():
                 raspwidth = rasplogo.size[0]
 
                 # Set weather
+                if internetOn():
+                  self.setWeather()
                 weather = self.weather
                 weatherlogo = self.weatherlogo
                 weatherwidth = None if weather is None else weather.size[0] 
@@ -490,7 +492,6 @@ class MainThread():
                     weatherlogo = Image.open("weather/s_" + str(iconname)).convert("RGBA")
                     logging.debug(str(weatherlogo))
                     self.weatherlogo = weatherlogo
-                    time.sleep(duration)
 
                     
                                 

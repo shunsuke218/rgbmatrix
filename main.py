@@ -1,7 +1,7 @@
 #!/usr/bin/python
-#from rgb#matrix import Adafruit_RGB#matrix
-def Adafruit_RGBmatrix(a=None, b=None): # Debug environment
-    return
+from rgbmatrix import Adafruit_RGB#matrix
+#def Adafruit_RGBmatrix(a=None, b=None): # Debug environment
+#    return
 
 import Image
 import ImageDraw
@@ -187,7 +187,7 @@ class MainThread():
         self.nyan_event.clear()
         self.stock_event.clear()
         self.stop_prompt.set()
-        #matrix.Clear()
+        matrix.Clear()
         self.text = input
         self.input_event.set()
 
@@ -197,7 +197,7 @@ class MainThread():
         self.input_event.clear()
         self.stock_event.clear()
         self.stop_prompt.set()
-        #matrix.Clear()
+        matrix.Clear()
         self.news_event.set()
         raw_input('News mode. Press anything to continue...')
         logging.debug("Exit news mode triggered")
@@ -210,7 +210,7 @@ class MainThread():
         self.nyan_event.clear()
         self.input_event.clear()
         self.stop_prompt.set()
-        #matrix.Clear()
+        matrix.Clear()
         self.stock_event.set()
         raw_input('Stock mode. Press anything to continue...')
         logging.debug("Exit stock mode triggered")
@@ -224,7 +224,7 @@ class MainThread():
         self.news_event.clear()
         self.stop_prompt.set()
         self.stock_event.clear()
-        #matrix.Clear()
+        matrix.Clear()
         self.nyan_event.set()
 
     def silent(self):
@@ -234,7 +234,7 @@ class MainThread():
         self.nyan_event.clear()
         self.stock_event.clear()
         self.stop_prompt.set()
-        #matrix.Clear()
+        matrix.Clear()
         raw_input('Silent mode. Press anything to continue...')
         self.stop_prompt.clear()
         self.print_event.set()
@@ -544,10 +544,10 @@ class MainThread():
         width = nyan_list[0].size[0]
         n = -width * 2/3
         i = 0
-        #matrix.Clear()
+        matrix.Clear()
         while n < 0:
             for file in nyan_list:
-                #matrix.SetImage(file.im.id, n, 0)
+                matrix.SetImage(file.im.id, n, 0)
                 n += 1
                 if n == -width * 1/3 and i < 64:
                     n -= 1
@@ -562,7 +562,7 @@ class MainThread():
             while not self.stop_event.is_set():
                 if repeat is False:
                         logging.debug("Start first loop!")
-                        #matrix.Clear()
+                        matrix.Clear()
                 while True:
                     start = 0 if repeat else SIZE
                     end = -self.width if word else -self.width/2
@@ -571,7 +571,7 @@ class MainThread():
                     for n in range (start, end, -1):
                         starttime = time.time()
                         # Exit if halted by event
-                        #matrix.SetImage(self.image.im.id, n, 0)
+                        matrix.SetImage(self.image.im.id, n, 0)
                         #logging.debug("prompting: " +str(n) + "/" + str(end))
                         self.stop_prompt.wait(self.sleep)
                         if self.stop_prompt.is_set():
@@ -611,9 +611,9 @@ class MainThread():
 if __name__ == '__main__':
         while True:
                 try:
-                        #matrix = Adafruit_RGB#matrix(32, 4)
+                        matrix = Adafruit_RGBmatrix(32, 4)
                         SIZE = 32 * 4
-                        #matrix.Clear()
+                        matrix.Clear()
                         
                         nyan_list = []
                         for filename in sorted(glob.glob('nyan/*.png'), key=lambda name: int(name[10:-4])):

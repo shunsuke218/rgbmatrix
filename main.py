@@ -434,7 +434,7 @@ class MainThread():
                 self.image = image
 
 
-    def setWeather(self):
+    def setWeather(self, force=false):
             while not self.stop_event.is_set():
                     logging.debug("Set weather")
                     now = time.time()
@@ -442,14 +442,12 @@ class MainThread():
                     file = "weather/weather.json"
                     filelastupdate = time.time() - os.path.getmtime(file)
                     logging.debug("json file timestamp (" + str(filelastupdate ) + ") less than duration (" + str (duration) + ")? " + str(filelastupdate > duration))
-                    if filelastupdate > duration: # json file too old?
+                    if filelastupdate > duration or force: # json file too old?
                             if internetOn(): # Internet connected?
                                     try:
                                             weatherurl = "http://api.wunderground.com/api/db42a9f158effdb7/conditions/q/MA/Cambridge.json"
                                             urllib.urlretrieve( weatherurl, file) # Try fetch json file
                                     except:
-                                            self.weather = None
-                                            self.weathericon = None
                                             return
                             else:
                                     return # If no update, don't change the information
@@ -671,6 +669,8 @@ if __name__ == '__main__':
                                         break
                         elif input == "internet" or input == "network" or input == "net" or input == "connection":
                                 thread.input("Internet on?: " + str(internetOn()))
+                        elif input == "weather" or input == "updateweather":
+                            thread.setWeather(True)
                         else:
                                 thread.input(input)
                 except (KeyboardInterrupt, SystemExit):

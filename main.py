@@ -1,5 +1,5 @@
 #!/usr/bin/python
-from rgbmatrix import Adafruit_RGB#matrix
+from rgbmatrix import Adafruit_RGBmatrix
 #def Adafruit_RGBmatrix(a=None, b=None): # Debug environment
 #    return
 

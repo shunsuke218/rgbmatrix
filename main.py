@@ -61,9 +61,9 @@ class MainThread():
         self.stop_prompt.clear()
 
         # Run Threads
-        self.weather_thread = threading.Thread(target = self.setWeather, name = "Weather Thread")
-        self.weather_thread.setDaemon(True)
-        self.weather_thread.start()
+        #self.weather_thread = threading.Thread(target = self.setWeather, name = "Weather Thread")
+        #self.weather_thread.setDaemon(True)
+        #self.weather_thread.start()
         
         self.reload_thread = threading.Thread(target = self.reload, name = "Reload Thread")
         self.reload_thread.setDaemon(True)
@@ -174,6 +174,7 @@ class MainThread():
         while not self.stop_event.is_set():
             self.print_event.wait()
             logging.debug("Reloading Image: " + str(self.image_text))
+            self.setWeather()
             self.setImage()
             time.sleep(0.9)
 
@@ -435,58 +436,56 @@ class MainThread():
 
 
     def setWeather(self, force=False):
-            while not self.stop_event.is_set():
-                    logging.debug("Set weather")
-                    now = time.time()
-                    duration = 60 * 3 # 3 Minutes
-                    file = "weather/weather.json"
-                    filelastupdate = time.time() - os.path.getmtime(file)
-                    logging.debug("json file timestamp (" + str(filelastupdate ) + ") less than duration (" + str (duration) + ")? " + str(filelastupdate > duration))
-                    if filelastupdate > duration or force: # json file too old?
-                            if internetOn(): # Internet connected?
-                                    try:
-                                            weatherurl = "http://api.wunderground.com/api/db42a9f158effdb7/conditions/q/MA/Cambridge.json"
-                                            urllib.urlretrieve( weatherurl, file) # Try fetch json file
-                                    except:
-                                            return
-                            else:
-                                    return # If no update, don't change the information
+                logging.debug("Set weather")
+                now = time.time()
+                duration = 60 * 3 # 3 Minutes
+                file = "weather/weather.json"
+                filelastupdate = time.time() - os.path.getmtime(file)
+                logging.debug("json: " + str(filelastupdate ) + " ?< " + str (duration) + " " + str(filelastupdate > duration))
+                if filelastupdate > duration or force: # json file too old?
+                        if internetOn(): # Internet connected?
+                                try:
+                                        weatherurl = "http://api.wunderground.com/api/db42a9f158effdb7/conditions/q/MA/Cambridge.json"
+                                        urllib.urlretrieve( weatherurl, file) # Try fetch json file
+                                except:
+                                        return
+                        else:
+                                return # If no update, don't change the information
 
-                    # Get weather information
-                    weatherfile = open(file)
-                    weatherjson = json.load(weatherfile)
-                    weathertext = "Temp. " +  weatherjson["current_observation"]["feelslike_string"]
-                    weatherimage = self.textToImage(weathertext)
+                # Get weather information
+                weatherfile = open(file)
+                weatherjson = json.load(weatherfile)
+                weathertext = "Temp. " +  weatherjson["current_observation"]["feelslike_string"]
+                weatherimage = self.textToImage(weathertext)
 
-                    self.weathertext = weathertext
-                    self.weather = weatherimage
+                self.weathertext = weathertext
+                self.weather = weatherimage
 
-                    # Weather icon
-                    logging.debug("Try finding a logo...")
-                    url = weatherjson["current_observation"]["icon_url"]
-                    iconname = url.split('/')[-1]
-                    if not os.path.isfile("weather/s_" + str(iconname)): # Image not available?
-                            try:
-                                    # Try fetch image file
-                                    logging.debug("No weather logo! Try to fetch new...")
-                                    urllib.urlretrieve(weatherjson["current_observation"]["icon_url"], "weather/" + iconname)
-                                    # Remove white color
-                                    weatherlogo = Image.open("weather/" + str(iconname)).convert("RGBA")
-                                    weatherlogo.thumbnail((32, 32), Image.ANTIALIAS)
-                                    background = Image.new("RGBA",(32, 32),color=(255,255,255,0))
-                                    background.paste(weatherlogo,(0,0),weatherlogo)
-                                    weatherlogo.save("weather/s_" + str(iconname), "PNG")
-                                    weatherlogo.close()
-                            except Exception as ex:
-                                    logging.debug("Something happened while try to fetch weather file.")
-                                    logging.exception("ERROR!!")
-                                    self.weather = None
-                                    self.weathericon = None
-                                    return
-                    weatherlogo = Image.open("weather/s_" + str(iconname)).convert("RGBA")
-                    logging.debug(str(weatherlogo))
-                    self.weatherlogo = weatherlogo
-                    time.sleep(duration / 4) # Every quarter of duration
+                # Weather icon
+                #logging.debug("Try finding a logo...")
+                url = weatherjson["current_observation"]["icon_url"]
+                iconname = url.split('/')[-1]
+                if not os.path.isfile("weather/s_" + str(iconname)): # Image not available?
+                        try:
+                                # Try fetch image file
+                                logging.debug("No weather logo! Try to fetch new...")
+                                urllib.urlretrieve(weatherjson["current_observation"]["icon_url"], "weather/" + iconname)
+                                # Remove white color
+                                weatherlogo = Image.open("weather/" + str(iconname)).convert("RGBA")
+                                weatherlogo.thumbnail((32, 32), Image.ANTIALIAS)
+                                background = Image.new("RGBA",(32, 32),color=(255,255,255,0))
+                                background.paste(weatherlogo,(0,0),weatherlogo)
+                                weatherlogo.save("weather/s_" + str(iconname), "PNG")
+                                weatherlogo.close()
+                        except Exception as ex:
+                                logging.debug("Something happened while try to fetch weather file.")
+                                logging.exception("ERROR!!")
+                                self.weather = None
+                                self.weathericon = None
+                                return
+                weatherlogo = Image.open("weather/s_" + str(iconname)).convert("RGBA")
+                #logging.debug(str(weatherlogo))
+                self.weatherlogo = weatherlogo
 
                     
                                 

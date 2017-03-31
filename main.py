@@ -260,7 +260,7 @@ class MainThread():
                 global rasplogo,akamailogo
 
                 # Set word text
-                userinput = default or "This is Akamai Security Operation Center (SOC). Current time is " + strftime("%H:%M:%S %Z", time.localtime()) + strftime(" (%H:%M:%S GMT)", time.gmtime())
+                userinput = default or "This is Akamai Cambridge Security Operation Center (SOC). Current time is " + strftime("%H:%M:%S %Z", time.localtime()) + strftime(" (%H:%M:%S GMT)", time.gmtime())
                 self.image_text = userinput
                 text = self.textToImage(userinput)
                 textwidth = text.size[0]
@@ -438,20 +438,16 @@ class MainThread():
     def setWeather(self, force=False):
                 logging.debug("Set weather")
                 now = time.time()
-                duration = 60 * 3 # 3 Minutes
+                duration = 60 * 5 # 3 Minutes
                 file = "weather/weather.json"
                 filelastupdate = time.time() - os.path.getmtime(file)
                 logging.debug("json: " + str(filelastupdate ) + " ?< " + str (duration) + " " + str(filelastupdate > duration))
                 if filelastupdate > duration or force: # json file too old?
-                        if internetOn(): # Internet connected?
-                                try:
-                                        weatherurl = "http://api.wunderground.com/api/db42a9f158effdb7/conditions/q/MA/Cambridge.json"
-                                        urllib.urlretrieve( weatherurl, file) # Try fetch json file
-                                except:
-                                        return
-                        else:
-                                return # If no update, don't change the information
-
+                        try:
+                                weatherurl = "http://api.wunderground.com/api/db42a9f158effdb7/conditions/q/MA/Cambridge.json"
+                                urllib.urlretrieve( weatherurl, file) # Try fetch json file
+                        except:
+                                return
                 # Get weather information
                 weatherfile = open(file)
                 weatherjson = json.load(weatherfile)

@@ -689,7 +689,8 @@ if __name__ == '__main__':
             elif input == "counter" or input == "count" or input == "timer":
                 input = raw_input('number: ')
                 try:
-                    thread.input("...".join(str(i) for i in reversed(range(input))) + "!")
+                    timer = "...".join(str(i) for i in reversed(range(int(input)))) + "!"
+                    thread.input(timer)
                 except:
                     logging.debug("Invalid number")
             elif input == "":

@@ -170,7 +170,7 @@ class MainThread():
                 logging.debug("Reloading Image/Not promptable")
             self.setWeather()
             self.setImage()
-            time.sleep(0.9)
+            time.sleep(1)
 
             
     ############################################################
@@ -442,6 +442,7 @@ class MainThread():
                 return
         else:
             logging.debug("Using old json file.")
+            return
         # Get weather information
         try:
             weatherfile = open(file)

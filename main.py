@@ -654,7 +654,7 @@ if __name__ == '__main__':
         try:
             input = raw_input('>>')
             logging.debug("input: " + str(input))
-            if len(input) > 140:
+            if len(input) > 2500:
                 pass
             elif input == "-" or input == "+":
                 thread.setSpeed(input)
@@ -686,6 +686,12 @@ if __name__ == '__main__':
                 thread.input("Internet on?: " + str(internetOn()))
             elif input == "weather" or input == "updateweather":
                 thread.setWeather(True)
+            elif input == "counter" or input == "count" or input == "timer":
+                input = raw_input('number: ')
+                try:
+                    thread.input("...".join(str(i) for i in reversed(range(input))) + "!")
+                except:
+                    logging.debug("Invalid number")
             elif input == "":
                 thread.reset()
             else:

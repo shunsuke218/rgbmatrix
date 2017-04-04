@@ -44,6 +44,7 @@ class MainThread():
         self.weather = None
         self.weatherlogo = None
         self.weathertext = None
+        self.default = None
         
         ## Events
         self.stop_event = threading.Event()
@@ -169,7 +170,9 @@ class MainThread():
             except:
                 logging.debug("Reloading Image/Not promptable")
             self.setWeather()
-            self.setImage()
+            #self.setImage()
+            self.setDefaultImage()
+            #self.image.save("testing2.png", "PNG")
             time.sleep(1)
 
             
@@ -305,8 +308,25 @@ class MainThread():
         if default is None:
             image.paste(image, ( width/2 ,0))
         self.image = image
-                
 
+        
+    def setDefaultImage(self):
+        global akamailogo
+        if self.default is None:
+            self.setImage()
+            self.default = self.image
+        userinput = "This is Akamai Cambridge Security Operation Center (SOC). Current time is " + strftime("%H:%M:%S %Z", time.localtime()) + strftime(" (%H:%M:%S GMT)", time.gmtime())
+        text = self.textToImage(userinput)
+        textloc1 = 10 + akamailogo.size[0] + 10
+        textloc2 = 10 + akamailogo.size[0] + 10 + self.default.size[0] / 2
+        self.image = self.default
+        self.image.paste(text, (textloc1,0))
+        self.image.paste(text, (textloc2,0))
+
+
+
+
+        
     def setNews(self):
         self.news = None
         file = "news/news.json"
@@ -445,10 +465,12 @@ class MainThread():
             return
         # Get weather information
         try:
+            self.default = None # Used to update setDefaultImage
             weatherfile = open(file)
             weatherjson = json.load(weatherfile)
             weathertext = "Temp. " +  weatherjson["current_observation"]["feelslike_string"]
             weatherimage = self.textToImage(weathertext)
+
 
             self.weathertext = weathertext
             self.weather = weatherimage
@@ -585,6 +607,7 @@ class MainThread():
                         return
 
 
+    #def textToImage(self, input, color="black"):
     def textToImage(self, input, color=128):
                 text = textwrap.fill(input, 100)
                 orig = Image.new("RGBA", (512,32))

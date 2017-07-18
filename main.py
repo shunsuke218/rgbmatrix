@@ -268,7 +268,7 @@ class MainThread():
         global rasplogo,akamailogo
 
         # Set word text
-        userinput = default or "This is Akamai Cambridge Security Operation Center (SOCC). " + strftime("%H:%M:%S %Z", time.localtime()) + strftime(" (%H:%M:%S GMT)", time.gmtime())
+        userinput = default or "This is Akamai Cambridge Security Operation Command Center (SOCC). " + strftime("%H:%M:%S %Z", time.localtime()) + strftime(" (%H:%M:%S GMT)", time.gmtime())
         self.image_text = userinput
         text = self.textToImage(userinput)
         textwidth = text.size[0]
@@ -315,7 +315,7 @@ class MainThread():
         if self.default is None:
             self.setImage()
             self.default = self.image
-        userinput = "This is Akamai Cambridge Security Operation Center (SOCC). " + strftime("%H:%M:%S %Z", time.localtime()) + strftime(" (%H:%M:%S GMT)", time.gmtime())
+        userinput = "This is Akamai Cambridge Security Operation Command Center (SOCC). " + strftime("%H:%M:%S %Z", time.localtime()) + strftime(" (%H:%M:%S GMT)", time.gmtime())
         text = self.textToImage(userinput)
         textloc1 = 10 + akamailogo.size[0] + 10
         textloc2 = 10 + akamailogo.size[0] + 10 + self.default.size[0] / 2

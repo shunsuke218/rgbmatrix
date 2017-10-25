@@ -1,75 +1,1130 @@
-
- [
-{
-"id": "983582"
-,"t" : ".DJI"
-,"e" : "INDEXDJX"
-,"l" : "20,809.32"
-,"l_fix" : "20809.32"
-,"l_cur" : "20,809.32"
-,"s": "0"
-,"ltt":"2:57PM EST"
-,"lt" : "Mar 9, 2:57PM EST"
-,"lt_dts" : "2017-03-09T14:57:07Z"
-,"c" : "-46.41"
-,"c_fix" : "-46.41"
-,"cp" : "-0.22"
-,"cp_fix" : "-0.22"
-,"ccol" : "chr"
-,"pcls_fix" : "20855.73"
-}
-,{
-"id": "13756934"
-,"t" : ".IXIC"
-,"e" : "INDEXNASDAQ"
-,"l" : "5,823.75"
-,"l_fix" : "5823.75"
-,"l_cur" : "5,823.75"
-,"s": "0"
-,"ltt":"2:57PM EST"
-,"lt" : "Mar 9, 2:57PM EST"
-,"lt_dts" : "2017-03-09T14:57:08Z"
-,"c" : "-13.80"
-,"c_fix" : "-13.80"
-,"cp" : "-0.24"
-,"cp_fix" : "-0.24"
-,"ccol" : "chr"
-,"pcls_fix" : "5837.552"
-}
-,{
-"id": "626307"
-,"t" : ".INX"
-,"e" : "INDEXSP"
-,"l" : "2,358.66"
-,"l_fix" : "2358.66"
-,"l_cur" : "2,358.66"
-,"s": "0"
-,"ltt":"2:57PM EST"
-,"lt" : "Mar 9, 2:57PM EST"
-,"lt_dts" : "2017-03-09T14:57:07Z"
-,"c" : "-4.32"
-,"c_fix" : "-4.32"
-,"cp" : "-0.18"
-,"cp_fix" : "-0.18"
-,"ccol" : "chr"
-,"pcls_fix" : "2362.98"
-}
-,{
-"id": "663784"
-,"t" : "AKAM"
-,"e" : "NASDAQ"
-,"l" : "63.93"
-,"l_fix" : "63.93"
-,"l_cur" : "63.93"
-,"s": "0"
-,"ltt":"2:57PM EST"
-,"lt" : "Mar 9, 2:57PM EST"
-,"lt_dts" : "2017-03-09T14:57:05Z"
-,"c" : "+0.38"
-,"c_fix" : "0.38"
-,"cp" : "0.60"
-,"cp_fix" : "0.60"
-,"ccol" : "chg"
-,"pcls_fix" : "63.55"
-}
+[
+    {
+        "avvo": "", 
+        "beta": "", 
+        "c": "-96.18", 
+        "ccol": "chr", 
+        "cp": "-0.41", 
+        "dy": "", 
+        "e": "INDEXDJX", 
+        "eo": "", 
+        "eps": "", 
+        "exchange": "INDEXDJX", 
+        "f_annual_date": "", 
+        "f_recent_quarter_date": "", 
+        "f_reuters_url": "http://stocks.us.reuters.com/stocks/ratios.asp?rpc=66&symbol=", 
+        "f_ttm_date": "", 
+        "financials": [
+            {
+                "f_figures": [], 
+                "f_type": "Income&nbsp;Statement", 
+                "url": "http:www.google.com/finance?fstype=ii&q=INDEXDJX:.DJI"
+            }, 
+            {
+                "f_figures": [], 
+                "f_type": "Balance&nbsp;Sheet", 
+                "url": "http:www.google.com/finance?fstype=bi&q=INDEXDJX:.DJI"
+            }, 
+            {
+                "f_figures": [], 
+                "f_type": "Cash&nbsp;Flow", 
+                "url": "http:www.google.com/finance?fstype=ci&q=INDEXDJX:.DJI"
+            }
+        ], 
+        "fwpe": "", 
+        "hi": "23,451.51", 
+        "hi52": "23,485.25", 
+        "id": "983582", 
+        "instown": "", 
+        "keyratios": [], 
+        "kr_annual_date": "", 
+        "kr_recent_quarter_date": "", 
+        "kr_ttm_date": "TTM", 
+        "l": "23,345.58", 
+        "ldiv": "", 
+        "lo": "23,251.11", 
+        "lo52": "17,883.56", 
+        "mc": "", 
+        "name": "Dow Jones Industrial Average", 
+        "op": "23,431.09", 
+        "pe": "", 
+        "shares": "", 
+        "symbol": ".DJI", 
+        "t": ".DJI", 
+        "vo": "260.97M"
+    }, 
+    {
+        "avvo": "", 
+        "beta": "", 
+        "c": "-33.19", 
+        "ccol": "chr", 
+        "cp": "-0.50", 
+        "dy": "", 
+        "e": "INDEXNASDAQ", 
+        "eo": "", 
+        "eps": "", 
+        "exchange": "INDEXNASDAQ", 
+        "f_annual_date": "", 
+        "f_recent_quarter_date": "", 
+        "f_reuters_url": "http://stocks.us.reuters.com/stocks/ratios.asp?rpc=66&symbol=", 
+        "f_ttm_date": "", 
+        "financials": [
+            {
+                "f_figures": [], 
+                "f_type": "Income&nbsp;Statement", 
+                "url": "http:www.google.com/finance?fstype=ii&q=INDEXNASDAQ:.IXIC"
+            }, 
+            {
+                "f_figures": [], 
+                "f_type": "Balance&nbsp;Sheet", 
+                "url": "http:www.google.com/finance?fstype=bi&q=INDEXNASDAQ:.IXIC"
+            }, 
+            {
+                "f_figures": [], 
+                "f_type": "Cash&nbsp;Flow", 
+                "url": "http:www.google.com/finance?fstype=ci&q=INDEXNASDAQ:.IXIC"
+            }
+        ], 
+        "fwpe": "", 
+        "hi": "6,600.64", 
+        "hi52": "6,641.57", 
+        "id": "13756934", 
+        "instown": "", 
+        "keyratios": [], 
+        "kr_annual_date": "", 
+        "kr_recent_quarter_date": "", 
+        "kr_ttm_date": "TTM", 
+        "l": "6,565.24", 
+        "ldiv": "", 
+        "lo": "6,517.93", 
+        "lo52": "5,034.41", 
+        "mc": "", 
+        "name": "NASDAQ Composite", 
+        "op": "6,587.22", 
+        "pe": "", 
+        "shares": "", 
+        "symbol": ".IXIC", 
+        "t": ".IXIC", 
+        "vo": "1.29B"
+    }, 
+    {
+        "avvo": "", 
+        "beta": "", 
+        "c": "-10.82", 
+        "ccol": "chr", 
+        "cp": "-0.42", 
+        "dy": "", 
+        "e": "INDEXSP", 
+        "eo": "", 
+        "eps": "", 
+        "exchange": "INDEXSP", 
+        "f_annual_date": "", 
+        "f_recent_quarter_date": "", 
+        "f_reuters_url": "http://stocks.us.reuters.com/stocks/ratios.asp?rpc=66&symbol=", 
+        "f_ttm_date": "", 
+        "financials": [
+            {
+                "f_figures": [], 
+                "f_type": "Income&nbsp;Statement", 
+                "url": "http:www.google.com/finance?fstype=ii&q=INDEXSP:.INX"
+            }, 
+            {
+                "f_figures": [], 
+                "f_type": "Balance&nbsp;Sheet", 
+                "url": "http:www.google.com/finance?fstype=bi&q=INDEXSP:.INX"
+            }, 
+            {
+                "f_figures": [], 
+                "f_type": "Cash&nbsp;Flow", 
+                "url": "http:www.google.com/finance?fstype=ci&q=INDEXSP:.INX"
+            }
+        ], 
+        "fwpe": "", 
+        "hi": "2,567.40", 
+        "hi52": "2,578.29", 
+        "id": "626307", 
+        "instown": "", 
+        "keyratios": [], 
+        "kr_annual_date": "", 
+        "kr_recent_quarter_date": "", 
+        "kr_ttm_date": "TTM", 
+        "l": "2,558.31", 
+        "ldiv": "", 
+        "lo": "2,544.00", 
+        "lo52": "2,083.79", 
+        "mc": "", 
+        "name": "S&P 500", 
+        "op": "2,566.52", 
+        "pe": "", 
+        "shares": "", 
+        "symbol": ".INX", 
+        "t": ".INX", 
+        "vo": "1.60B"
+    }, 
+    {
+        "avvo": "1.75M", 
+        "beta": "0.65", 
+        "c": "+2.85", 
+        "ccol": "chg", 
+        "cp": "5.49", 
+        "dy": "", 
+        "e": "NASDAQ", 
+        "eo": "", 
+        "eps": "1.67", 
+        "events": [], 
+        "exchange": "NASDAQ", 
+        "f_annual_date": "2016", 
+        "f_recent_quarter_date": "Q3 (Sep '17)", 
+        "f_reuters_url": "http://stocks.us.reuters.com/stocks/ratios.asp?rpc=66&symbol=AKAM.O", 
+        "f_ttm_date": "2015", 
+        "financials": [
+            {
+                "f_figures": [
+                    {
+                        "annual": "2,340.05", 
+                        "recent_quarter": "621.40", 
+                        "title": "", 
+                        "ttm": "2,197.45"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "2,340.05", 
+                        "recent_quarter": "621.40", 
+                        "title": "", 
+                        "ttm": "2,197.45"
+                    }, 
+                    {
+                        "annual": "809.00", 
+                        "recent_quarter": "225.47", 
+                        "title": "", 
+                        "ttm": "725.62"
+                    }, 
+                    {
+                        "annual": "1,531.05", 
+                        "recent_quarter": "395.93", 
+                        "title": "", 
+                        "ttm": "1,471.83"
+                    }, 
+                    {
+                        "annual": "800.08", 
+                        "recent_quarter": "244.74", 
+                        "title": "", 
+                        "ttm": "772.93"
+                    }, 
+                    {
+                        "annual": "167.63", 
+                        "recent_quarter": "57.23", 
+                        "title": "", 
+                        "ttm": "148.59"
+                    }, 
+                    {
+                        "annual": "92.42", 
+                        "recent_quarter": "7.75", 
+                        "title": "", 
+                        "ttm": "81.63"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "11.33", 
+                        "recent_quarter": "0.33", 
+                        "title": "", 
+                        "ttm": "2.52"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "1,880.45", 
+                        "recent_quarter": "535.52", 
+                        "title": "", 
+                        "ttm": "1,731.30"
+                    }, 
+                    {
+                        "annual": "459.59", 
+                        "recent_quarter": "85.88", 
+                        "title": "", 
+                        "ttm": "466.15"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "3.79", 
+                        "recent_quarter": "0.54", 
+                        "title": "", 
+                        "ttm": "-4.04"
+                    }, 
+                    {
+                        "annual": "459.45", 
+                        "recent_quarter": "86.13", 
+                        "title": "", 
+                        "ttm": "456.62"
+                    }, 
+                    {
+                        "annual": "316.13", 
+                        "recent_quarter": "60.51", 
+                        "title": "", 
+                        "ttm": "321.41"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "316.13", 
+                        "recent_quarter": "60.51", 
+                        "title": "", 
+                        "ttm": "321.41"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "316.13", 
+                        "recent_quarter": "60.51", 
+                        "title": "", 
+                        "ttm": "321.41"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "316.13", 
+                        "recent_quarter": "60.51", 
+                        "title": "", 
+                        "ttm": "321.41"
+                    }, 
+                    {
+                        "annual": "316.13", 
+                        "recent_quarter": "60.51", 
+                        "title": "", 
+                        "ttm": "321.41"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "176.22", 
+                        "recent_quarter": "171.50", 
+                        "title": "", 
+                        "ttm": "180.41"
+                    }, 
+                    {
+                        "annual": "1.79", 
+                        "recent_quarter": "0.35", 
+                        "title": "", 
+                        "ttm": "1.78"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "1.85", 
+                        "recent_quarter": "0.35", 
+                        "title": "", 
+                        "ttm": "1.79"
+                    }
+                ], 
+                "f_type": "Income&nbsp;Statement", 
+                "url": "http:www.google.com/finance?fstype=ii&q=NASDAQ:AKAM"
+            }, 
+            {
+                "f_figures": [
+                    {
+                        "annual": "324.17", 
+                        "recent_quarter": "368.15", 
+                        "title": "", 
+                        "ttm": "289.47"
+                    }, 
+                    {
+                        "annual": "512.85", 
+                        "recent_quarter": "383.85", 
+                        "title": "", 
+                        "ttm": "460.09"
+                    }, 
+                    {
+                        "annual": "837.02", 
+                        "recent_quarter": "752.00", 
+                        "title": "", 
+                        "ttm": "749.56"
+                    }, 
+                    {
+                        "annual": "368.60", 
+                        "recent_quarter": "400.84", 
+                        "title": "", 
+                        "ttm": "380.40"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "393.76", 
+                        "recent_quarter": "400.84", 
+                        "title": "", 
+                        "ttm": "380.40"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "40.53", 
+                        "recent_quarter": "142.94", 
+                        "title": "", 
+                        "ttm": "123.23"
+                    }, 
+                    {
+                        "annual": "38.61", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "1,309.92", 
+                        "recent_quarter": "1,295.78", 
+                        "title": "", 
+                        "ttm": "1,253.19"
+                    }, 
+                    {
+                        "annual": "2,084.71", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-1,283.69", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "1,228.50", 
+                        "recent_quarter": "1,358.76", 
+                        "title": "", 
+                        "ttm": "1,150.24"
+                    }, 
+                    {
+                        "annual": "149.46", 
+                        "recent_quarter": "176.29", 
+                        "title": "", 
+                        "ttm": "156.09"
+                    }, 
+                    {
+                        "annual": "779.31", 
+                        "recent_quarter": "661.93", 
+                        "title": "", 
+                        "ttm": "774.67"
+                    }, 
+                    {
+                        "annual": "104.94", 
+                        "recent_quarter": "132.62", 
+                        "title": "", 
+                        "ttm": "94.30"
+                    }, 
+                    {
+                        "annual": "4,373.15", 
+                        "recent_quarter": "4,509.13", 
+                        "title": "", 
+                        "ttm": "4,181.68"
+                    }, 
+                    {
+                        "annual": "76.12", 
+                        "recent_quarter": "88.34", 
+                        "title": "", 
+                        "ttm": "61.98"
+                    }, 
+                    {
+                        "annual": "229.74", 
+                        "recent_quarter": "267.97", 
+                        "title": "", 
+                        "ttm": "216.17"
+                    }, 
+                    {
+                        "annual": "0.00", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "0.00"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "68.73", 
+                        "recent_quarter": "74.00", 
+                        "title": "", 
+                        "ttm": "54.29"
+                    }, 
+                    {
+                        "annual": "374.59", 
+                        "recent_quarter": "430.31", 
+                        "title": "", 
+                        "ttm": "332.44"
+                    }, 
+                    {
+                        "annual": "640.09", 
+                        "recent_quarter": "657.13", 
+                        "title": "", 
+                        "ttm": "618.05"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "640.09", 
+                        "recent_quarter": "657.13", 
+                        "title": "", 
+                        "ttm": "618.05"
+                    }, 
+                    {
+                        "annual": "640.09", 
+                        "recent_quarter": "657.13", 
+                        "title": "", 
+                        "ttm": "618.05"
+                    }, 
+                    {
+                        "annual": "11.65", 
+                        "recent_quarter": "15.98", 
+                        "title": "", 
+                        "ttm": "12.89"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "122.45", 
+                        "recent_quarter": "133.06", 
+                        "title": "", 
+                        "ttm": "97.43"
+                    }, 
+                    {
+                        "annual": "1,148.78", 
+                        "recent_quarter": "1,236.48", 
+                        "title": "", 
+                        "ttm": "1,060.81"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "1.73", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "1.77"
+                    }, 
+                    {
+                        "annual": "4,239.59", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "4,437.42"
+                    }, 
+                    {
+                        "annual": "-960.73", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-1,276.86"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "0.00"
+                    }, 
+                    {
+                        "annual": "-59.02", 
+                        "recent_quarter": "3,272.66", 
+                        "title": "", 
+                        "ttm": "-41.45"
+                    }, 
+                    {
+                        "annual": "3,224.37", 
+                        "recent_quarter": "3,272.66", 
+                        "title": "", 
+                        "ttm": "3,120.88"
+                    }, 
+                    {
+                        "annual": "4,373.15", 
+                        "recent_quarter": "4,509.13", 
+                        "title": "", 
+                        "ttm": "4,181.68"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "173.25", 
+                        "recent_quarter": "170.00", 
+                        "title": "", 
+                        "ttm": "177.21"
+                    }
+                ], 
+                "f_type": "Balance&nbsp;Sheet", 
+                "url": "http:www.google.com/finance?fstype=bi&q=NASDAQ:AKAM"
+            }, 
+            {
+                "f_figures": [
+                    {
+                        "annual": "316.13", 
+                        "recent_quarter": "199.21", 
+                        "title": "", 
+                        "ttm": "321.41"
+                    }, 
+                    {
+                        "annual": "334.30", 
+                        "recent_quarter": "272.92", 
+                        "title": "", 
+                        "ttm": "299.56"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "175.51", 
+                        "recent_quarter": "165.05", 
+                        "title": "", 
+                        "ttm": "125.80"
+                    }, 
+                    {
+                        "annual": "40.35", 
+                        "recent_quarter": "-33.64", 
+                        "title": "", 
+                        "ttm": "17.38"
+                    }, 
+                    {
+                        "annual": "866.30", 
+                        "recent_quarter": "603.54", 
+                        "title": "", 
+                        "ttm": "764.15"
+                    }, 
+                    {
+                        "annual": "-316.29", 
+                        "recent_quarter": "-307.93", 
+                        "title": "", 
+                        "ttm": "-444.98"
+                    }, 
+                    {
+                        "annual": "-153.14", 
+                        "recent_quarter": "50.19", 
+                        "title": "", 
+                        "ttm": "9.42"
+                    }, 
+                    {
+                        "annual": "-469.43", 
+                        "recent_quarter": "-257.74", 
+                        "title": "", 
+                        "ttm": "-435.56"
+                    }, 
+                    {
+                        "annual": "-40.03", 
+                        "recent_quarter": "-49.22", 
+                        "title": "", 
+                        "ttm": "-26.91"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "-314.23", 
+                        "recent_quarter": "-264.89", 
+                        "title": "", 
+                        "ttm": "-240.81"
+                    }, 
+                    {
+                        "annual": "0.00", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "0.00"
+                    }, 
+                    {
+                        "annual": "-354.26", 
+                        "recent_quarter": "-314.11", 
+                        "title": "", 
+                        "ttm": "-267.73"
+                    }, 
+                    {
+                        "annual": "-7.91", 
+                        "recent_quarter": "12.29", 
+                        "title": "", 
+                        "ttm": "-10.04"
+                    }, 
+                    {
+                        "annual": "34.70", 
+                        "recent_quarter": "43.98", 
+                        "title": "", 
+                        "ttm": "50.82"
+                    }, 
+                    {
+                        "annual": "-", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "-"
+                    }, 
+                    {
+                        "annual": "120.22", 
+                        "recent_quarter": "-", 
+                        "title": "", 
+                        "ttm": "75.03"
+                    }
+                ], 
+                "f_type": "Cash&nbsp;Flow", 
+                "url": "http:www.google.com/finance?fstype=ci&q=NASDAQ:AKAM"
+            }
+        ], 
+        "fwpe": "", 
+        "hi": "56.85", 
+        "hi52": "71.64", 
+        "id": "663784", 
+        "iid": "us-TRBC:5720101010", 
+        "iname": "IT Services & Consulting - NEC", 
+        "instown": "88%", 
+        "keyratios": [
+            {
+                "annual": "13.51%", 
+                "recent_quarter": "9.74%", 
+                "title": "Net profit margin", 
+                "ttm": "11.84%"
+            }, 
+            {
+                "annual": "19.64%", 
+                "recent_quarter": "13.82%", 
+                "title": "Operating margin", 
+                "ttm": "16.77%"
+            }, 
+            {
+                "annual": "34.50%", 
+                "recent_quarter": "", 
+                "title": "EBITD margin", 
+                "ttm": "31.60%"
+            }, 
+            {
+                "annual": "7.39%", 
+                "recent_quarter": "5.39%", 
+                "title": "Return on average assets", 
+                "ttm": "6.56%"
+            }, 
+            {
+                "annual": "9.96%", 
+                "recent_quarter": "7.40%", 
+                "title": "Return on average equity", 
+                "ttm": "9.03%"
+            }, 
+            {
+                "annual": "-", 
+                "recent_quarter": "6,490", 
+                "title": "Employees", 
+                "ttm": "-"
+            }
+        ], 
+        "kr_annual_date": "2016", 
+        "kr_recent_quarter_date": "Q3 (Sep '17)", 
+        "kr_ttm_date": "TTM", 
+        "l": "54.76", 
+        "ldiv": "", 
+        "lo": "54.25", 
+        "lo52": "44.65", 
+        "management": [
+            {
+                "age": "78", 
+                "name": "George H. Conrades", 
+                "title": "Executive Chairman of the Board"
+            }, 
+            {
+                "age": "51", 
+                "name": "Rick M. McConnell", 
+                "title": "President, General Manager- Web Division"
+            }, 
+            {
+                "age": "60", 
+                "name": "F. Thomson Leighton", 
+                "title": "Chief Executive Officer, Director"
+            }, 
+            {
+                "age": "50", 
+                "name": "James Benson", 
+                "title": "Chief Financial Officer, Chief Accounting Officer"
+            }, 
+            {
+                "age": "56", 
+                "name": "James Gemmell", 
+                "title": "Executive Vice President, Chief Human Resource Officer"
+            }, 
+            {
+                "age": "57", 
+                "name": "Melanie Haratunian", 
+                "title": "Executive Vice President, General Counsel"
+            }, 
+            {
+                "age": "52", 
+                "name": "Robert Blumofe", 
+                "title": "General Manager of the Company's Enterprise & Carrier Division and Executive Vice President of the Akamai Platform organization"
+            }, 
+            {
+                "age": "55", 
+                "name": "William Wheaton", 
+                "title": "Executive Vice President, General Manager Media Division"
+            }, 
+            {
+                "age": "73", 
+                "name": "Frederic Salerno", 
+                "title": "Lead Independent Director"
+            }, 
+            {
+                "age": "58", 
+                "name": "Paul L. Sagan", 
+                "title": "Director"
+            }
+        ], 
+        "mc": "9.39B", 
+        "moreresources": [
+            {
+                "name": "Estimates", 
+                "url": "http://www.marketwatch.com/tools/quotes/snapshot.asp?symb=AKAM&pg=analyst"
+            }, 
+            {
+                "name": "SEC Filings", 
+                "url": "http://google.brand.edgar-online.com/?sym=AKAM"
+            }, 
+            {
+                "name": "Major Holders", 
+                "url": "http://investing.money.msn.com/investments/institutional-ownership?symbol=AKAM"
+            }, 
+            {
+                "name": "Options", 
+                "url": "http://www.marketwatch.com/tools/quotes/options1.asp?symb=AKAM"
+            }, 
+            {
+                "name": "Research", 
+                "url": "http://finance.yahoo.com/q/rr?s=AKAM"
+            }
+        ], 
+        "name": "Akamai Technologies, Inc.", 
+        "op": "55.65", 
+        "pe": "32.78", 
+        "related": [
+            {
+                "c": "+2.85", 
+                "ccol": "chg", 
+                "cp": "5.49", 
+                "e": "NASDAQ", 
+                "id": "663784", 
+                "l": "54.76", 
+                "mc": "9.39B", 
+                "name": "Akamai Technologies, Inc.", 
+                "t": "AKAM"
+            }, 
+            {
+                "c": "+0.02", 
+                "ccol": "chg", 
+                "cp": "0.42", 
+                "e": "NASDAQ", 
+                "id": "715183", 
+                "l": "4.82", 
+                "mc": "528.81M", 
+                "name": "Limelight Networks, Inc.", 
+                "t": "LLNW"
+            }, 
+            {
+                "c": "-0.03", 
+                "ccol": "chr", 
+                "cp": "-0.19", 
+                "e": "NYSE", 
+                "id": "660979", 
+                "l": "15.98", 
+                "mc": "42.55B", 
+                "name": "Orange SA (ADR)", 
+                "t": "ORAN"
+            }, 
+            {
+                "c": "-0.14", 
+                "ccol": "chr", 
+                "cp": "-3.00", 
+                "e": "NASDAQ", 
+                "id": "663561", 
+                "l": "4.53", 
+                "mc": "377.37M", 
+                "name": "Internap Corp", 
+                "t": "INAP"
+            }, 
+            {
+                "c": "-2.03", 
+                "ccol": "chr", 
+                "cp": "-1.30", 
+                "e": "NYSE", 
+                "id": "18241", 
+                "l": "153.85", 
+                "mc": "143.38B", 
+                "name": "International Business Machines Corp.", 
+                "t": "IBM"
+            }, 
+            {
+                "c": "-0.23", 
+                "ccol": "chr", 
+                "cp": "-0.47", 
+                "e": "NYSE", 
+                "id": "664887", 
+                "l": "48.71", 
+                "mc": "198.71B", 
+                "name": "Verizon Communications Inc.", 
+                "t": "VZ"
+            }, 
+            {
+                "c": "0.000", 
+                "ccol": "chb", 
+                "cp": "0.00", 
+                "e": "OTCMKTS", 
+                "id": "660763", 
+                "l": "0.190", 
+                "mc": "4.53M", 
+                "name": "Onstream Media Corp", 
+                "t": "ONSM"
+            }, 
+            {
+                "c": "-1.28", 
+                "ccol": "chr", 
+                "cp": "-3.66", 
+                "e": "NYSE", 
+                "id": "33312", 
+                "l": "33.60", 
+                "mc": "206.33B", 
+                "name": "AT&T Inc.", 
+                "t": "T"
+            }, 
+            {
+                "c": "+0.07", 
+                "ccol": "chg", 
+                "cp": "1.07", 
+                "e": "NASDAQ", 
+                "id": "198224", 
+                "l": "6.59", 
+                "mc": "21.99B", 
+                "name": "Telefonaktiebolaget LM Ericsson", 
+                "t": "ERIC"
+            }, 
+            {
+                "c": "-0.17", 
+                "ccol": "chr", 
+                "cp": "-1.19", 
+                "e": "NYSE", 
+                "id": "121415074219226", 
+                "l": "14.15", 
+                "mc": "22.91B", 
+                "name": "Hewlett Packard Enterprise Co", 
+                "t": "HPE"
+            }, 
+            {
+                "c": "-0.84", 
+                "ccol": "chr", 
+                "cp": "-0.77", 
+                "e": "NASDAQ", 
+                "id": "661691", 
+                "l": "108.05", 
+                "mc": "10.80B", 
+                "name": "Verisign, Inc.", 
+                "t": "VRSN"
+            }
+        ], 
+        "shares": "170.00M", 
+        "sid": "us-TRBC:57", 
+        "sname": "Technology", 
+        "summary": [
+            {
+                "address": "150 Broadway, CAMBRIDGE, MA 2142, United States", 
+                "fax": "+1-617-4443001", 
+                "overview": "Akamai Technologies, Inc. is engaged in providing cloud services for delivering, optimizing and securing content and business applications over the Internet. The Company is involved in offering content delivery network (CDN) services. Its services include the delivery of content, applications and software over the Internet, as well as mobile and security solutions. Its solutions include Performance and Security Solutions, Media Delivery Solutions, and Service and Support Solutions. Its Performance and Security Solutions include Web and Mobile Performance Solutions, Cloud Security Solutions, Enterprise Solutions and Network Operator Solutions. The Media Delivery Solutions offerings include Adaptive Delivery solutions, Download Delivery offerings, Infinite Media Acceleration solutions Media Services and Media Analytics. It offers a range of professional services and solutions designed to assist its customers with integrating, configuring, optimizing and managing its core offerings.", 
+                "phone": "+1-617-4443000", 
+                "reuters_url": "http://stocks.us.reuters.com/stocks/fullDescription.asp?rpc=66&symbol=AKAM.O", 
+                "url": "http://www.akamai.com"
+            }
+        ], 
+        "symbol": "AKAM", 
+        "t": "AKAM", 
+        "vo": "7.47M"
+    }
 ]

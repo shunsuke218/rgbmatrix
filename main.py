@@ -1,7 +1,20 @@
 #!/usr/bin/python
 from rgbmatrix import Adafruit_RGBmatrix
-#def Adafruit_RGBmatrix(a=None, b=None): # Debug environment
-#    return
+"""
+class Adafruit_RGBmatrix(): # Debug environment
+    def __init__(self, a=None, b=None): 
+        return
+    def Clear(self):
+        return
+    def SetImage(self, a, b, c):
+        return
+"""
+
+import socket
+origGetAddrInfo = socket.getaddrinfo
+def getAddrInfoWrapper(host, port, family=0, socktype=0, proto=0, flags=0):
+    return origGetAddrInfo(host, port, socket.AF_INET, socktype, proto, flags)
+socket.getaddrinfo = getAddrInfoWrapper
 
 import Image
 import ImageDraw
@@ -16,6 +29,7 @@ import glob
 import json
 import logging
 import os
+import platform
 import sys
 import threading
 import urllib, urllib2
@@ -36,8 +50,14 @@ class MainThread():
     def __init__(self):
         self.sleep = 0.01
         self.text = None
-        self.font = ImageFont.truetype('/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf', 24)
-        #self.font = ImageFont.truetype('/Library/Fonts/Arial Bold.ttf', 24)
+        try:
+            if ( platform.system() == "Darwin" ):
+                self.font = ImageFont.truetype('/Library/Fonts/Arial Bold.ttf', 24)
+            else:
+                self.font = ImageFont.truetype('/usr/share/fonts/truetype/droid/DroidSansFallbackFull.ttf', 24)
+        except:
+            logging.debug( platform.system() )
+            self.font = None;
         self.image_text = None
         self.news = None
         self.stock = None
@@ -360,26 +380,29 @@ class MainThread():
     def setStock(self):
         self.stock = None
         file = "stock/stock.json"
-        url = "https://www.google.com/finance/info?q=INDEXDJX:%20.DJI,INDEXNASDAQ:%20.IXIC,INDEXSP:%20.INX,NASDAQ%3aAKAM"
+        stocktype = ["INDEXDJX:%20.DJI", "INDEXNASDAQ:%20.IXIC", "INDEXSP:%20.INX", "NASDAQ%3aAKAM"]
+        stocknames = ["INDEXDJX", "INDEXNASDAQ", "INDEXSP", "AKAM"]
+        url = "https://finance.google.com/finance?output=json&q="
         duration = 60 * 10 # 10 Minutes
         filelastupdate = time.time() - os.path.getmtime(file)
         logging.debug("json file too old? " + str(filelastupdate) + " > " + str(duration) + ": " + str(filelastupdate > duration))
         if filelastupdate  > duration: # json file too old?
+            stockdata = []
             try:
-                urllib.urlretrieve( url, file ) # Try fetch json file
-                with open(file, 'r') as input:
-                    data = input.read()
-                data = data.replace('//','')
-                with open(file, 'w') as output:
-                    output.write(data)
-                logging.debug("Obtained news json.")
+                for stock, stockname in zip(stocktype, stocknames):
+                    stockname = "stock/" + stockname + ".json"
+                    logging.debug("Obtaining stockname: " + stockname)
+                    logging.debug("URL: " + url + stock)
+                    data = urllib2.urlopen( url + stock ).read().replace("//", "")
+                    stockdata.append(json.loads(data)[0])
+                    logging.debug("Data persable.")
+                with open(file, 'w') as filename:
+                    json.dump(stockdata, filename, sort_keys=True, indent=4)
             except:
-                return
+                logging.debug("Unable to obtain new json.")
         try:
-            stockfile = open(file)
-            stockjson = json.load(stockfile)
-            logging.exception("EXCEPTION")
-
+            with open(file, 'r') as filename:
+                stockjson = json.load(filename)
             stockname = ["DOW","NASDAQ","S&P","AKAM"]
             getlist = lambda x: [entry[x] for entry in stockjson]
             lists = [stockname, getlist("l"), getlist("c"), getlist("cp")]

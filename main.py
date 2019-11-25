@@ -64,6 +64,7 @@ class MainThread():
         self.weather = None
         self.weatherlogo = None
         self.weathertext = None
+        self.weathertime = os.path.getmtime("weather/weather.json")
         self.default = None
         
         ## Events
@@ -472,29 +473,30 @@ class MainThread():
     def setWeather(self, force=False):
         logging.debug("Set weather")
         now = time.time()
-        duration = 60 * 5 # 5 Minutes
+        duration = 60 * 30 # 30 Minutes
         file = "weather/weather.json"
 
-        filelastupdate = time.time() - os.path.getmtime(file)
+        filelastupdate = time.time() - self.weathertime
         logging.debug("json: " + str(filelastupdate ) + " ?< " + str (duration) + " " + str(filelastupdate > duration))
         if filelastupdate > duration or force: # json file too old?
             try:
-                weatherurl = "http://api.wunderground.com/api/db42a9f158effdb7/conditions/q/MA/Cambridge.json"
+                weatherurl = "http://dataservice.accuweather.com/currentconditions/v1/329319?apikey=h7Z47DvD4mpW0b1iQzuL4sMLVgvc4PI6"
                 urllib.urlretrieve( weatherurl, file) # Try fetch json file
+                self.weathertime = os.path.getmtime(file)
             except:
                 return
         else:
             logging.debug("Using old json file.")
-            return
+            return # Won't load the json until the firs expire
         # Get weather information
         try:
             self.default = None # Used to update setDefaultImage
             weatherfile = open(file)
-            weatherjson = json.load(weatherfile)
-            weathertext = weatherjson["current_observation"]["feelslike_string"]
+            weatherjson = json.load(weatherfile)[0]
+            c_temp = weatherjson["Temperature"]["Metric"]["Value"]
+            f_temp = weatherjson["Temperature"]["Imperial"]["Value"]
+            weathertext = "{} F ({} C)".format(f_temp,c_temp)
             weatherimage = self.textToImage(weathertext)
-
-
             self.weathertext = weathertext
             self.weather = weatherimage
         except:
@@ -505,25 +507,25 @@ class MainThread():
 
         # Weather icon
         #logging.debug("Try finding a logo...")
-        url = weatherjson["current_observation"]["icon_url"]
-        iconname = url.split('/')[-1]
-        if not os.path.isfile("weather/s_" + str(iconname)): # Image not available?
+        url = "https://developer.accuweather.com/sites/default/files/"
+        iconname = "{:0>2}-s.png".format(weatherjson["WeatherIcon"])
+        if not os.path.isfile("weather/" + iconname): # Image not available?
             try:
                 # Try fetch image file
                 logging.debug("No weather logo! Try to fetch new...")
-                urllib.urlretrieve(weatherjson["current_observation"]["icon_url"], "weather/" + iconname)
+                urllib.urlretrieve( url+iconname, "weather/" + iconname)
                 # Remove white color
                 weatherlogo = Image.open("weather/" + str(iconname)).convert("RGBA")
-                weatherlogo.thumbnail((32, 32), Image.ANTIALIAS)
+                weatherlogo.thumbnail((60, 60), Imag.AeNTIALIAS)
                 background = Image.new("RGBA",(32, 32),color=(255,255,255,0))
                 background.paste(weatherlogo,(0,0),weatherlogo)
-                weatherlogo.save("weather/s_" + str(iconname), "PNG")
+                weatherlogo.save("weather/" + iconname, "PNG")
                 #weatherlogo.close()
             except Exception as ex:
                 logging.debug("Something happened while try to fetch weather file.")
                 logging.exception("ERROR!!")
                 return
-        weatherlogo = Image.open("weather/s_" + str(iconname)).convert("RGBA")
+        weatherlogo = Image.open("weather/" + iconname).convert("RGBA")
         #logging.debug(str(weatherlogo))
         self.weatherlogo = weatherlogo
 
